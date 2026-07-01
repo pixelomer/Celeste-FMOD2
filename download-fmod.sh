@@ -80,7 +80,16 @@ else
 
 	# Send sign up request
 	echo -n "Creating fmod.com account... "
-	register_data="\"{ \\\"username\\\":\\\"${username}\\\", \\\"password\\\":\\\"${password}\\\", \\\"company\\\":\\\"\\\", \\\"email\\\":\\\"${username}%40${mail_domain}\\\", \\\"name\\\":\\\"${username}\\\", \\\"ml_news\\\":false, \\\"ml_release\\\":false, \\\"industry\\\":1 }\""
+	register_data='{
+		"username": "'"${username}"'",
+		"password": "'"${password}"'",
+		"company": "",
+		"email": "'"${username}"'@'"${mail_domain}"'",
+		"name": "'"${username}"'",
+		"ml_news": false,
+		"ml_release": false,
+		"industry": 1
+	}'
 	register_response="$(curl -s \
 		-X POST \
 		-H 'Referer: https://www.fmod.com/profile/register' \
